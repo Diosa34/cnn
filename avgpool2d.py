@@ -15,7 +15,7 @@ class AvgPool2D:
         out = np.zeros((B, C, H_out, W_out))
         for i in range(H_out):
             for j in range(W_out):
-                out[:,:,i,j] = np.mean(x[:,:,i*s:i*s+k,j*s:j*s+k], axis=(2,3))
+                out[:, :, i, j] = np.mean(x[:, :, i*s:i*s+k, j*s:j*s+k], axis=(2, 3))
         return out
 
     def backward(self, delta):
@@ -24,5 +24,5 @@ class AvgPool2D:
         dx = np.zeros(self.x_shape)
         for i in range(H_out):
             for j in range(W_out):
-                dx[:,:,i*s:i*s+k,j*s:j*s+k] += delta[:,:,i,j][:,:,None,None]  # /(k*k)
+                dx[:, :, i*s:i*s+k, j*s:j*s+k] += delta[:, :, i, j][:, :, None, None]  # /(k*k)
         return dx

@@ -8,7 +8,6 @@ def load_data(path):
         return (x_train, y_train), (x_test, y_test)
 
 
-# === Активации ===
 def relu(x):
     return np.maximum(0, x)
 
@@ -25,7 +24,6 @@ def d_tanh(x):
     return 1 - np.tanh(x) ** 2
 
 
-# === Softmax и Cross-Entropy ===
 def softmax(x):
     e = np.exp(x - np.max(x, axis=1, keepdims=True))
     return e / e.sum(axis=1, keepdims=True)
